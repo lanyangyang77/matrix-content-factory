@@ -3,13 +3,9 @@ const nextConfig = {
   output: "export",
   images: { unoptimized: true },
   reactStrictMode: true,
-  // 核心：让 Next.js 忽略所有 TypeScript 和 ESLint 语法错误，强行打包！
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // 忽略所有可能阻止打包的校验
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
 }
 
-module.exports = module.exports = nextConfig
+module.exports = nextConfig
