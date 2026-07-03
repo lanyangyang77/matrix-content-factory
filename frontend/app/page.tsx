@@ -3,7 +3,6 @@
 import { useState, useCallback, useRef, useEffect } from "react"
 import ContentForm from "@/components/ContentForm"
 import ResultPanel from "@/components/ResultPanel"
-export const dynamic = "force-dynamic"
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8002"
 
