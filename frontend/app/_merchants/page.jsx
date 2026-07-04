@@ -1,3 +1,7 @@
-export default function Page() {
-  return <h1>项目正在打包发布中...</h1>;
+"use client";
+
+import React from 'react';
+
+export default function MerchantsPage() {
+  return <div>商家管理模块</div>;
 }
