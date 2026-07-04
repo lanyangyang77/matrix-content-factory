@@ -1,16 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  output: 'export',
   images: { unoptimized: true },
-  reactStrictMode: false, // 关闭严格模式减少校验
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
-  
-  // 核心：告诉 Next.js，就算有些页面静态导出失败了，也假装没看见，强行继续打包！
-  images: { unoptimized: true },
-  experimental: {
-    missingSuspenseWithCSRBypass: true
-  }
-};
+  reactStrictMode: false,
+  // 核心：强制 Webpack 在服务器端打包时，遇到 document 或 window 直接用空对象代替，绝不报错！
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        document: false,
+        window: false,
+      };
+    }
+    return config;
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
